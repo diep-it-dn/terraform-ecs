@@ -1,15 +1,16 @@
+cluster = "maxshare"
 # A name to describe the environment we're creating.
-environment = "acc"
+environment = "staging"
 
 # The AWS-CLI profile for the account to create resources in.
 aws_profile = "default"
 
 # The AWS region to create resources in.
-aws_region = "eu-west-1"
+aws_region = "ap-southeast-1"
 
 # The AMI to seed ECS instances with.
 # Leave empty to use the latest Linux 2 ECS-optimized AMI by Amazon.
-aws_ecs_ami = ""
+aws_ecs_ami = "ami-0920ef3608aa17d63"
 
 # The IP range to attribute to the virtual network.
 # The allowed block size is between a /16 (65,536 addresses) and /28 (16 addresses).
@@ -25,7 +26,7 @@ private_subnet_cidrs = ["10.0.50.0/24", "10.0.51.0/24"]
 
 # The AWS availability zones to create subnets in.
 # For high-availability, we need at least two.
-availability_zones = ["eu-west-1a", "eu-west-1b"]
+availability_zones = ["ap-southeast-1a", "ap-southeast-1b"]
 
 # Maximum number of instances in the ECS cluster.
 max_size = 1

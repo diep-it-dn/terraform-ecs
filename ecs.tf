@@ -7,7 +7,7 @@ module "ecs" {
   source = "./modules/ecs"
 
   environment          = var.environment
-  cluster              = var.environment
+  cluster              = var.cluster
   cloudwatch_prefix    = "${var.environment}"           #See ecs_instances module when to set this and when not!
   vpc_cidr             = var.vpc_cidr
   public_subnet_cidrs  = var.public_subnet_cidrs
@@ -26,6 +26,9 @@ resource "aws_key_pair" "ecs" {
   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtMljjj0Ccxux5Mssqraa/iHHxheW+m0Rh17fbd8t365y9EwBn00DN/0PjdU2CK6bjxwy8BNGXWoUXiSDDtGqRupH6e9J012yE5kxhpXnnkIcLGjkAiflDBVV4sXS4b3a2LSXL5Dyb93N2GdnJ03FJM4qDJ8lfDQxb38eYHytZkmxW14xLoyW5Hbyr3SXhdHC2/ecdp5nLNRwRWiW6g9OA6jTQ3LgeOZoM6dK4ltJUQOakKjiHsE+jvmO0hJYQN7+5gYOw0HHsM+zmATvSipAWzoWBWcmBxAbcdW0R0KvCwjylCyRVbRMRbSZ/c4idZbFLZXRb7ZJkqNJuy99+ld41 ecs@aws.fake"
 }
 
+variable "cluster" {
+  description = "A name to describe the cluster we're creating."
+}
 variable "environment" {
   description = "A name to describe the environment we're creating."
 }
