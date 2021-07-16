@@ -1,0 +1,38 @@
+{
+  "family": "maxshare-staging",
+  "executionRoleArn": "arn:aws:iam::463548466342:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "containerDefinitions": [
+      {
+          "name": "maxshare-staging",
+          "image": "463548466342.dkr.ecr.ap-southeast-1.amazonaws.com/maxshare",
+           "environmentFiles": [
+              {
+                  "value": "arn:aws:s3:::maxshare-staging/maxshare-staging.env",
+                  "type": "s3"
+              }
+          ],
+          "portMappings": [
+              {
+                  "containerPort": 8080,
+                  "hostPort": 8080,
+                  "protocol": "tcp"
+              }
+          ],
+          "essential": true,
+          "logConfiguration": {
+              "logDriver": "awslogs",
+              "options": {
+                  "awslogs-group": "/ecs/first-run-task-definition",
+                  "awslogs-region": "us-east-2",
+                  "awslogs-stream-prefix": "ecs"
+              }
+          }
+      }
+  ],
+  "requiresCompatibilities": [
+      "FARGATE"
+  ],
+  "cpu": "512",
+  "memory": "1024"
+}
